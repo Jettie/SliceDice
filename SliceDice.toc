@@ -1,0 +1,9 @@
+## Interface: 11200
+## Title: SliceDice
+## Notes: Displays SnD Monitor as a progress bar
+## Title-zhCN:|CFFFFFF00[职业]|R|CFFFFF569盗贼|RJT切割监视计时条
+## Notes-zhCN:|CFFFFFF00SliceDice|R|N以进度条倒计时形式监控切割剩余时间
+## Author: Jettie - JT
+## SavedVariablesPerCharacter: SliceDice_Save
+SliceDice.xml
+

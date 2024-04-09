@@ -1,0 +1,123 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+	..\FrameXML\UI.xsd">
+
+	<Script file="SliceDice.lua"/>
+	<Frame name="SliceDice" parent="UIParent" hidden="false">
+		<Scripts>
+			<OnLoad>
+				SliceDice_OnLoad();
+			</OnLoad>
+			<OnEvent>
+				SliceDice_OnEvent(event);
+			</OnEvent>
+			<OnUpdate>
+				SliceDice_OnUpdate();
+			</OnUpdate>
+		</Scripts>
+	</Frame>
+	<Frame name="SliceDiceBar" parent="UIParent" hidden="true" movable="true">
+		<Size>
+			<AbsDimension x="276" y="20"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER">
+				<Offset>
+					<AbsDimension x="0" y="-165"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Backdrop edgeFile="" tile="true">
+			<EdgeSize>
+				<AbsValue val="4" />
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="4" />
+			</TileSize>
+		</Backdrop>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="SliceDiceText" inherits="GameFontHighlightLarge">
+					<Size>
+						<AbsDimension x="30" y="30"/>
+					</Size>
+					<Anchors>
+						<Anchor point="RIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<StatusBar name="SliceDiceFrameStatusBar">
+				<Size>
+					<AbsDimension x="276" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<Texture name="SliceDiceSpark" file="Interface\CastingBar\UI-CastingBar-Spark" alphaMode="ADD">
+							<Size>
+								<AbsDimension x="32" y="64"/>
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						this:SetFrameLevel(this:GetFrameLevel() - 1)
+					</OnLoad>
+				</Scripts>
+				<BarTexture file="Interface\AddOns\SliceDice\Statusbar_Clean"/>
+				<BarColor r="1.0" g="0.88" b="0.69"/>
+				<Backdrop name="SliceDice_Backdrop" bgFile="Interface\TutorialFrame\TutorialFrameBackground" edgeFile="" tile="true">
+					<TileSize>
+						<AbsValue val="4"/>
+					</TileSize>
+					<EdgeSize>
+						<AbsValue val="4"/>
+					</EdgeSize>
+					<BackgroundInsets>
+						<AbsInset left="0" right="0" top="0" bottom="0"/>
+					</BackgroundInsets>
+					<Color a="0.5" />
+				</Backdrop>
+			</StatusBar>
+		</Frames>
+		<Scripts>
+ 			<OnMouseDown>
+ 				if( arg1 == "LeftButton" and SliceDice_STATUS == 2 ) then
+ 					this:StartMoving();
+				end
+ 			</OnMouseDown>
+			<OnMouseUp>
+ 				if( arg1 == "LeftButton" ) then
+ 					this:StopMovingOrSizing();
+				end
+ 			</OnMouseUp>
+		</Scripts>
+	</Frame>
+
+	<Frame name="SliceDice_Variable_Frame" hidden="false">
+		<Scripts>
+			<OnUpdate>
+				SliceDice_LoadVariables(arg1)
+			</OnUpdate>
+		</Scripts>
+	</Frame>
+</Ui>
